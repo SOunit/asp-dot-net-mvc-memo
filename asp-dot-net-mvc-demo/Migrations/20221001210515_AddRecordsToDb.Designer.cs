@@ -9,8 +9,8 @@ using asp_dot_net_mvc_demo.Data;
 namespace asp_dot_net_mvc_demo.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221001194653_AddRecord")]
-    partial class AddRecord
+    [Migration("20221001210515_AddRecordsToDb")]
+    partial class AddRecordsToDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,11 +31,12 @@ namespace asp_dot_net_mvc_demo.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tasks");
+                    b.ToTable("Records");
                 });
 #pragma warning restore 612, 618
         }

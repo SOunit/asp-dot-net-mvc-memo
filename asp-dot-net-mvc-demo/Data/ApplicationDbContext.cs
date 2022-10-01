@@ -10,13 +10,7 @@ namespace asp_dot_net_mvc_demo.Data
         {
         }
 
-        // 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-        }
-
         // create table
-        public DbSet<Record> Tasks { get; set; }
+        public DbSet<Record> Records { get; set; }
     }
 }

@@ -29,11 +29,12 @@ namespace asp_dot_net_mvc_demo.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tasks");
+                    b.ToTable("Records");
                 });
 #pragma warning restore 612, 618
         }
