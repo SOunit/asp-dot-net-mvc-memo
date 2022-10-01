@@ -1,0 +1,9 @@
+﻿@model Record
+
+<h1>Create</h1>
+<form method="post" action="">
+	<label asp-for="Title"></label>
+	<input type="text" asp-for="Title" />
+	<span asp-validation-for="Title"></span>
+	<button>Create Record</button>
+</form>
