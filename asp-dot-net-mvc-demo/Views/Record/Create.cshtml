@@ -1,9 +1,19 @@
 ﻿@model Record
 
-<h1>Create</h1>
-<form method="post" action="">
-	<label asp-for="Title"></label>
-	<input type="text" asp-for="Title" />
-	<span asp-validation-for="Title"></span>
-	<button>Create Record</button>
-</form>
+<h1>Create Record</h1>
+<div class="card bg-primary card-form">
+	<div class="card-body">
+		<form method="post" action="">
+			<div class="form-group">
+				<label asp-for="Title" class="text-light"></label>
+				<input type="text" asp-for="Title" class="form-control form-control-lg" placeholder="Title" />
+				<span asp-validation-for="Title" class="text-danger"></span>
+			</div>
+			<button class="btn btn-outline-light btn-block">Create Record</button>
+		</form>
+	</div>
+</div>
+
+@section Scripts{
+	<partial name="_ValidationScriptsPartial" />
+}
