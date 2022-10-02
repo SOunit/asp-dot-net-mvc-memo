@@ -4,6 +4,10 @@
 <form method="post" action="">
 	<label asp-for="Title"></label>
 	<input type="text" asp-for="Title" />
-	<span asp-validation-for="Title"></span>
-	<button>Create Record</button>
+	<span asp-validation-for="Title" class="text-danger"></span>
+	<button class="btn btn-primary">Create Record</button>
 </form>
+
+@section Scripts{
+	<partial name="_ValidationScriptsPartial" />
+}
