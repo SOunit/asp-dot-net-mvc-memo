@@ -15,7 +15,8 @@ namespace asp_dot_net_mvc_demo.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var records = _db.Records;
+            return View(records);
         }
 
         public IActionResult Create()

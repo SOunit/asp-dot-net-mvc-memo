@@ -1,2 +1,44 @@
-﻿<h1>Record</h1>
-<a class="nav-link text-dark" asp-area="" asp-controller="Record" asp-action="Create">Create Record</a>
+﻿@model IEnumerable<Record>
+
+<h1>Record</h1>
+
+<a class="btn btn-primary text-light"
+   asp-area=""
+   asp-controller="Record"
+   asp-action="Create">Create Record</a>
+
+<i class='bi bi-check-circle'></i>
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Title</th>
+			<th scope="col">IsCompleted</th>
+		</tr>
+	</thead>
+	<tbody>
+		@{
+			var index = 0;
+		}
+		@foreach (var record in Model)
+		{
+			<tr>
+				<th scope="row">@(index + 1)</th>
+				<td>@record.Title</td>
+				<td>
+					@if (record.IsCompleted)
+					{
+						<span>
+							true
+						</span>
+					}else{
+						<span>False</span>
+					}
+				</td>
+			</tr>
+			index++;
+		}
+
+	</tbody>
+</table>
