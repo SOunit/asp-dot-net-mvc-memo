@@ -1,0 +1,27 @@
+﻿@model List<Order>
+@{
+	var orders = Model;
+}
+
+<h1>Order</h1>
+
+<a class="btn btn-primary text-light"
+   asp-area=""
+   asp-controller="Order"
+   asp-action="Create">Create Order</a>
+
+<a class="btn btn-success text-light"
+   asp-area=""
+   asp-controller="Order"
+   asp-action="Update">Update Order</a>
+
+@foreach (var order in orders)
+{
+	<h1>@order.Id</h1>
+	<ul>
+		@foreach (var item in order.OrderItems)
+		{
+			<li>@item.Product.Name - @item.Quantity</li>
+		}
+	</ul>
+}
