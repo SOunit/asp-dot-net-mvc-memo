@@ -12,5 +12,8 @@ namespace asp_dot_net_mvc_demo.Data
 
         // create table
         public DbSet<Record> Records { get; set; }
+        public DbSet<Product> Products { get; set; }
+
+
     }
 }
