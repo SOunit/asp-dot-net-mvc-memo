@@ -1,0 +1,40 @@
+﻿@using asp_dot_net_mvc_demo.Data.ViewModels
+
+@model UpdateOrderListVM
+@{
+	var orderList = Model.OrderList;
+	var orderVMList = Model.UpdateOrderVMList;
+}
+
+<h1>Update Order</h1>
+
+<form method="post">
+
+	@{
+		var i = 0;
+	}
+	@foreach (var order in orderList)
+	{
+		@Html.HiddenFor(m => m.UpdateOrderVMList[i].OrderId);
+		<h1>Order ID @orderVMList[i].OrderId</h1>
+
+		<ul>
+			@foreach (var item in order.OrderItems)
+			{
+				<div>Product Name: @item.Product.Name</div>
+				<div>
+					OrderItem ID: @item.Id
+				</div>
+				@Html.HiddenFor(m => m.UpdateOrderVMList[i].OrderItemId);
+				<div>
+					Quantity: @Html.EditorFor(m => m.UpdateOrderVMList[i].Quantity)
+				</div>
+
+				i++;
+			}
+		</ul>
+	}
+
+	<input asp-for="TestString" />
+	<button type="submit" class="btn btn-success">Update Order List</button>
+</form>
