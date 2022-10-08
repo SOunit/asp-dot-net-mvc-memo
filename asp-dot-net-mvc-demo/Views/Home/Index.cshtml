@@ -1,52 +1,53 @@
 ﻿@{
 	ViewData["Title"] = "Home Page";
-	var SampleData = "SampleData";
 }
 
-@*Razor syntax*@
-@*https://learn.microsoft.com/en-us/aspnet/core/mvc/views/razor?view=aspnetcore-5.0*@
-
-<div class="text-center">
-	<h1 class="display-4">Welcome</h1>
-	<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-
-	<h2>Razor Page Syntax</h2>
-
-	<h3>Escape</h3>
-	<p>@@@SampleData</p>
-
-	<h3>Inside is string</h3>
-	<p>test@test.com</p>
-
-	<h3>Implicit Razor Expression</h3>
-	<p>@SampleData</p>
-
-	<h3>Explicit Razor Expression</h3>
-	<p>@(SampleData + " Explicit is evaluated.")</p>
-
-	<h3>Expression encoding</h3>
-	<p>@Html.Raw("<strong>This can be risky if show user input<strong>")</p>
-
-	<h3>Razor code blocks</h3>
-	@{
-		var razorCodeBlock = "razorCodeBlock";
-	}
-	<p>@razorCodeBlock</p>
-
-	@{
-		void RenderName(string name)
-		{
-			<p>Name: <strong>@name</strong></p>
-		}
-
-		RenderName("Mahatma Gandhi");
-		RenderName("Martin Luther King, Jr.");
-	}
-
-	<h3>Implicit transitions</h3>
-	@{
-		var inCSharp = true;
-		<p>Now in HTML, was in C# @inCSharp</p>
-	}
-
-</div>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Topic</th>
+			<th>Page</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Razor Page Syntax</td>
+			<td>
+				<a asp-controller="RazorPage" asp-action="Index">Razor Page Syntax</a>
+			</td>
+		</tr>
+		<tr>
+			<td>CRUD with Form</td>
+			<td>
+				<a asp-controller="Record" asp-action="Index">Record</a>
+			</td>
+		</tr>
+		<tr>
+			<td>Base CRUD</td>
+			<td>
+				<a asp-controller="Product" asp-action="Index">Product</a>
+			</td>
+		</tr>
+		<tr>
+			<td>Update Multiple Item at Once</td>
+			<td>
+				<a asp-controller="Order" asp-action="Index">Order</a>
+			</td>
+		</tr>
+		<tr>
+			<td>Entity Framework</td>
+			<td>
+			</td>
+		</tr>
+		<tr>
+			<td>Razor Page Best Practice</td>
+			<td>
+			</td>
+		</tr>
+		<tr>
+			<td>Folder Structure Best Practice</td>
+			<td>
+			</td>
+		</tr>
+	</tbody>
+</table>
