@@ -1,0 +1,102 @@
+﻿@{
+	ViewData["Title"] = "Razor Page";
+	var SampleData = "SampleData";
+}
+
+@*Razor syntax*@
+@*https://learn.microsoft.com/en-us/aspnet/core/mvc/views/razor?view=aspnetcore-5.0*@
+
+<div class="text-center">
+	<h1 class="display-4">Razor Page Syntax</h1>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Syntax</th>
+				<th>Output</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Escape</td>
+				<td>@@@@SampleData</td>
+				<td>@@@SampleData</td>
+			</tr>
+			<tr>
+				<td>Inside is string</td>
+				<td>test@test.com</td>
+				<td>test@test.com</td>
+			</tr>
+			<tr>
+				<td>Implicit Razor Expression</td>
+				<td>@@SampleData</td>
+				<td>@SampleData</td>
+			</tr>
+			<tr>
+				<td>Explicit Razor Expression</td>
+				<td>@@(SampleData + " Explicit is evaluated.")</td>
+				<td>@(SampleData + " Explicit is evaluated.")</td>
+			</tr>
+			<tr>
+				<td>Expression encoding</td>
+				<td>@@Html.Raw("<strong>This can be risky if show user input<strong>")</td>
+				<td>@Html.Raw("<strong>This can be risky if show user input<strong>")</td>
+			</tr>
+			<tr>
+				<td>Razor code blocks</td>
+				<td>
+					@@{
+					var razorCodeBlock = "razorCodeBlock";
+					}
+				</td>
+				<td>
+					@{
+						var razorCodeBlock = "razorCodeBlock";
+					}
+					@razorCodeBlock
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+					@@{
+					void RenderName(string name)
+					{
+					<p>Name: <strong>@@name</strong></p>
+					}
+
+					RenderName("Mahatma Gandhi");
+					RenderName("Martin Luther King, Jr.");
+					}
+				</td>
+				<td>
+					@{
+						void RenderName(string name)
+						{
+							<p>Name: <strong>@name</strong></p>
+						}
+
+						RenderName("Mahatma Gandhi");
+						RenderName("Martin Luther King, Jr.");
+					}
+				</td>
+			</tr>
+			<tr>
+				<td>Implicit transitions</td>
+				<td>
+					@@{
+					var inCSharp = true;
+					<p>Now in HTML, was in C# @@inCSharp</p>
+					}
+				</td>
+				<td>
+					@{
+						var inCSharp = true;
+						<p>Now in HTML, was in C# @inCSharp</p>
+					}
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
