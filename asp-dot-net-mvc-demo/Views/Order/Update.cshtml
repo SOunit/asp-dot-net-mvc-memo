@@ -15,24 +15,33 @@
 	}
 	@foreach (var order in orderList)
 	{
-		@Html.HiddenFor(m => m.UpdateOrderVMList[i].OrderId);
+		@Html.HiddenFor(m => m.UpdateOrderVMList[i].OrderId)
 		<h1>Order ID @orderVMList[i].OrderId</h1>
-
-		<ul>
-			@foreach (var item in order.OrderItems)
-			{
-				<div>Product Name: @item.Product.Name</div>
-				<div>
-					OrderItem ID: @item.Id
-				</div>
-				@Html.HiddenFor(m => m.UpdateOrderVMList[i].OrderItemId);
-				<div>
-					Quantity: @Html.EditorFor(m => m.UpdateOrderVMList[i].Quantity)
-				</div>
-
-				i++;
-			}
-		</ul>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Item Id</th>
+					<th>Name</th>
+					<th>Quantity</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in order.OrderItems)
+				{
+					<tr>
+						<td>
+							@item.Id
+						</td>
+						<td>@item.Product.Name</td>
+						@Html.HiddenFor(m => m.UpdateOrderVMList[i].OrderItemId)
+						<td>
+							@Html.EditorFor(m => m.UpdateOrderVMList[i].Quantity)
+						</td>
+					</tr>
+					i++;
+				}
+			</tbody>
+		</table>
 	}
 
 	<input asp-for="TestString" />
