@@ -12,10 +12,5 @@ namespace asp_dot_net_mvc_demo.Data.ViewModels
         public string TestString { get; set; }
 
         public List<UpdateOrderVM> UpdateOrderVMList { get; set; }
-
-        //public UpdateOrderListVM()
-        //{
-        //    this.UpdateOrderVMList = new List<UpdateOrderVM>();
-        //}
     }
 }

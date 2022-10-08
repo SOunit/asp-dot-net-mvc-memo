@@ -96,7 +96,6 @@ namespace asp_dot_net_mvc_demo.Controllers
                 var orderItemId = updateOrderVm.OrderItemId;
                 var quantity = updateOrderVm.Quantity;
 
-                // First
                 var dbOrderItem = _db.OrderItems.FirstOrDefault(oi => oi.Id == orderItemId);
 
                 dbOrderItem.Quantity = quantity;
