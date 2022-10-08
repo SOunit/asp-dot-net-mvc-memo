@@ -74,8 +74,8 @@ namespace asp_dot_net_mvc_demo.Controllers
                 {
                     var updateOrderVM = new UpdateOrderVM()
                     {
-                        OrderId = item.Id,
-                        OrderItemId = item.ProductId,
+                        OrderId = order.Id,
+                        OrderItemId = item.Id,
                         Quantity = item.Quantity,
                     };
 
@@ -89,9 +89,21 @@ namespace asp_dot_net_mvc_demo.Controllers
         }
 
         [HttpPost, ActionName("Update")]
-        public IActionResult UpdatePost(UpdateOrderListVM model)
+        public async Task<IActionResult> UpdatePost(UpdateOrderListVM model)
         {
-            var test = model;
+            foreach (var updateOrderVm in model.UpdateOrderVMList)
+            {
+                var orderItemId = updateOrderVm.OrderItemId;
+                var quantity = updateOrderVm.Quantity;
+
+                // First
+                var dbOrderItem = _db.OrderItems.FirstOrDefault(oi => oi.Id == orderItemId);
+
+                dbOrderItem.Quantity = quantity;
+
+                await _db.SaveChangesAsync();
+
+            }
             return RedirectToAction(nameof(Index));
         }
     }
