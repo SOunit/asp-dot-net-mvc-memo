@@ -11,17 +11,6 @@
 			<td>One to One</td>
 			<td>
 				<ul>
-					<li>PatientA - DiseaseA</li>
-					<li>PatientB - DiseaseB</li>
-					<li>PatientC - DiseaseC</li>
-				</ul>
-			</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>One to One</td>
-			<td>
-				<ul>
 					<li>Person - Car</li>
 					<li>Person - Car</li>
 					<li>Person - Car</li>
@@ -59,6 +48,48 @@
 							<li>Answer9</li>
 						</ul>
 					</li>
+				</ul>
+			</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Many to Many</td>
+			<td>
+				<div class="d-flex">
+					<ul>
+						<li>PersonA</li>
+						<li>PersonB</li>
+						<li>PersonC</li>
+					</ul>
+					<ul>
+						<li>LibraryBookA</li>
+						<li>LibraryBookB</li>
+						<li>LibraryBookC</li>
+					</ul>
+				</div>
+			</td>
+			<td>
+				<a asp-action="PersonsBooks">Perons - Books</a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Relation</th>
+			<th>Sample</th>
+			<th>Page</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>One to One</td>
+			<td>
+				<ul>
+					<li>PatientA - DiseaseA</li>
+					<li>PatientB - DiseaseB</li>
+					<li>PatientC - DiseaseC</li>
 				</ul>
 			</td>
 			<td></td>
@@ -108,24 +139,6 @@
 						<li>ProductA</li>
 						<li>ProductB</li>
 						<li>ProductC</li>
-					</ul>
-				</div>
-			</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>Many to Many</td>
-			<td>
-				<div class="d-flex">
-					<ul>
-						<li>PersonA</li>
-						<li>PersonB</li>
-						<li>PersonC</li>
-					</ul>
-					<ul>
-						<li>LibraryBookA</li>
-						<li>LibraryBookB</li>
-						<li>LibraryBookC</li>
 					</ul>
 				</div>
 			</td>

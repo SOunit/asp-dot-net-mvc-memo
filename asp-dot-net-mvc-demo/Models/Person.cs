@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace asp_dot_net_mvc_demo.Models
 {
@@ -11,5 +12,8 @@ namespace asp_dot_net_mvc_demo.Models
 
         [ForeignKey("CarId")]
         public Car Car { get; set; }
+
+        // relationship
+        public List<PersonBook> PersonsBooks { get; set; }
     }
 }
