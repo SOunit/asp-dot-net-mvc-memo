@@ -10,7 +10,7 @@ using asp_dot_net_mvc_demo.Data;
 namespace asp_dot_net_mvc_demo.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221010164606_AddSummaryIdToOrder")]
+    [Migration("20221010170210_AddSummaryIdToOrder")]
     partial class AddSummaryIdToOrder
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,8 +58,8 @@ namespace asp_dot_net_mvc_demo.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("SummaryId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("SummaryId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 

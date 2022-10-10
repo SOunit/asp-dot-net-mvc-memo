@@ -56,8 +56,8 @@ namespace asp_dot_net_mvc_demo.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("SummaryId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("SummaryId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 

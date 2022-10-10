@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace asp_dot_net_mvc_demo.Migrations
 {
@@ -6,10 +7,10 @@ namespace asp_dot_net_mvc_demo.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<int>(
+            migrationBuilder.AddColumn<Guid>(
                 name: "SummaryId",
                 table: "Orders",
-                type: "int",
+                type: "uniqueidentifier",
                 nullable: true);
         }
 

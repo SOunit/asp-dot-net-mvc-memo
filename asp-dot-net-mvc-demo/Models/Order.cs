@@ -1,19 +1,20 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace asp_dot_net_mvc_demo.Models
 {
-	public class Order
-	{
-		public int Id { get; set; }
+    public class Order
+    {
+        public int Id { get; set; }
 
-		public int? SummaryId { get; set; }
+        public Guid? SummaryId { get; set; }
 
-		public List<OrderItem> OrderItems { get; set; }
+        public List<OrderItem> OrderItems { get; set; }
 
-		// for post
-		public Order()
-		{
-			this.OrderItems = new List<OrderItem>();
-		}
-	}
+        // for post
+        public Order()
+        {
+            this.OrderItems = new List<OrderItem>();
+        }
+    }
 }
