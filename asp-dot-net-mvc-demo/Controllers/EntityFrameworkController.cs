@@ -63,7 +63,11 @@ namespace asp_dot_net_mvc_demo.Controllers
 
         public IActionResult PersonsBooks()
         {
-            return View();
+            var persons = _db.Persons
+                .Include(p => p.PersonsBooks)
+                .ThenInclude(pb => pb.Book).ToList();
+
+            return View(persons);
         }
 
         public IActionResult CreatePersonsBooks()
