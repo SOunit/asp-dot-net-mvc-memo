@@ -1,0 +1,148 @@
+﻿<table class="table">
+	<thead>
+		<tr>
+			<th>Relation</th>
+			<th>Sample</th>
+			<th>Page</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>One to One</td>
+			<td>
+				<ul>
+					<li>Person - Car</li>
+					<li>Person - Car</li>
+					<li>Person - Car</li>
+				</ul>
+			</td>
+			<td>
+				<a asp-action="PersonCar">Parson - Car</a>
+			</td>
+		</tr>
+		<tr>
+			<td>One to Many</td>
+			<td>
+				<ul>
+					<li>
+						QuestionA
+						<ul>
+							<li>Answer1</li>
+							<li>Answer2</li>
+							<li>Answer3</li>
+						</ul>
+					</li>
+					<li>
+						QuestionB
+						<ul>
+							<li>Answer4</li>
+							<li>Answer5</li>
+							<li>Answer6</li>
+						</ul>
+					</li>
+					<li>
+						QuestionC
+						<ul>
+							<li>Answer7</li>
+							<li>Answer8</li>
+							<li>Answer9</li>
+						</ul>
+					</li>
+				</ul>
+			</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Many to Many</td>
+			<td>
+				<div class="d-flex">
+					<ul>
+						<li>PersonA</li>
+						<li>PersonB</li>
+						<li>PersonC</li>
+					</ul>
+					<ul>
+						<li>LibraryBookA</li>
+						<li>LibraryBookB</li>
+						<li>LibraryBookC</li>
+					</ul>
+				</div>
+			</td>
+			<td>
+				<a asp-action="PersonsBooks">Perons - Books</a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Relation</th>
+			<th>Sample</th>
+			<th>Page</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>One to One</td>
+			<td>
+				<ul>
+					<li>PatientA - DiseaseA</li>
+					<li>PatientB - DiseaseB</li>
+					<li>PatientC - DiseaseC</li>
+				</ul>
+			</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>One to Many</td>
+			<td>
+				<ul>
+					<li>
+						CityA
+						<ul>
+							<li>Citizen1</li>
+							<li>Citizen2</li>
+							<li>Citizen3</li>
+						</ul>
+					</li>
+					<li>
+						CityB
+						<ul>
+							<li>Citizen4</li>
+							<li>Citizen5</li>
+							<li>Citizen6</li>
+						</ul>
+					</li>
+					<li>
+						CityC
+						<ul>
+							<li>Citizen7</li>
+							<li>Citizen8</li>
+							<li>Citizen9</li>
+						</ul>
+					</li>
+				</ul>
+			</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Many to Many</td>
+			<td>
+				<div class="d-flex">
+					<ul>
+						<li>CustomerA</li>
+						<li>CustomerB</li>
+						<li>CustomerC</li>
+					</ul>
+					<ul>
+						<li>ProductA</li>
+						<li>ProductB</li>
+						<li>ProductC</li>
+					</ul>
+				</div>
+			</td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>

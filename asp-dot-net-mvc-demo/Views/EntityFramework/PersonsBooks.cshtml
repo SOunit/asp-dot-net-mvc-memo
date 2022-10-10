@@ -1,0 +1,33 @@
+﻿@model List<Person>
+@{
+	var persons = Model;
+}
+
+<h1>Persons - Books</h1>
+
+<a asp-action="CreatePersonsBooks">Create Sample Records</a>
+
+@foreach (var person in persons)
+{
+	<h1>@person.Name</h1>
+	@if (person.PersonsBooks != null)
+	{
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Book Id</th>
+					<th>Book Title</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var personBook in person.PersonsBooks)
+				{
+					<tr>
+						<td>@personBook.Book.Id</td>
+						<td>@personBook.Book.Title</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	}
+}

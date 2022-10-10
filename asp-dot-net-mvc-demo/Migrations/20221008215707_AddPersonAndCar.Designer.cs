@@ -2,36 +2,23 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using asp_dot_net_mvc_demo.Data;
 
 namespace asp_dot_net_mvc_demo.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221008215707_AddPersonAndCar")]
+    partial class AddPersonAndCar
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("asp_dot_net_mvc_demo.Models.Book", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Books");
-                });
 
             modelBuilder.Entity("asp_dot_net_mvc_demo.Models.Car", b =>
                 {
@@ -105,21 +92,6 @@ namespace asp_dot_net_mvc_demo.Migrations
                     b.ToTable("Persons");
                 });
 
-            modelBuilder.Entity("asp_dot_net_mvc_demo.Models.PersonBook", b =>
-                {
-                    b.Property<int>("PersonId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BookId")
-                        .HasColumnType("int");
-
-                    b.HasKey("PersonId", "BookId");
-
-                    b.HasIndex("BookId");
-
-                    b.ToTable("PersonsBooks");
-                });
-
             modelBuilder.Entity("asp_dot_net_mvc_demo.Models.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -185,38 +157,9 @@ namespace asp_dot_net_mvc_demo.Migrations
                     b.Navigation("Car");
                 });
 
-            modelBuilder.Entity("asp_dot_net_mvc_demo.Models.PersonBook", b =>
-                {
-                    b.HasOne("asp_dot_net_mvc_demo.Models.Book", "Book")
-                        .WithMany("PersonsBooks")
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("asp_dot_net_mvc_demo.Models.Person", "Person")
-                        .WithMany("PersonsBooks")
-                        .HasForeignKey("PersonId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Book");
-
-                    b.Navigation("Person");
-                });
-
-            modelBuilder.Entity("asp_dot_net_mvc_demo.Models.Book", b =>
-                {
-                    b.Navigation("PersonsBooks");
-                });
-
             modelBuilder.Entity("asp_dot_net_mvc_demo.Models.Order", b =>
                 {
                     b.Navigation("OrderItems");
-                });
-
-            modelBuilder.Entity("asp_dot_net_mvc_demo.Models.Person", b =>
-                {
-                    b.Navigation("PersonsBooks");
                 });
 #pragma warning restore 612, 618
         }

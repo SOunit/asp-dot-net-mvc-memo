@@ -1,0 +1,38 @@
+﻿@model List<Person>
+@{
+	var personList = Model;
+}
+
+<h1>Person - Car</h1>
+
+<a asp-action="CreatePersonCar">Create Sample Record</a>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>Person Id</th>
+			<th>Person Name</th>
+			<th>Car Id</th>
+			<th>Car Name</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var person in personList)
+		{
+			<tr>
+				<td>
+					@person.Id
+				</td>
+				<td>
+					@person.Name
+				</td>
+				<td>
+					@person.Car?.Id
+				</td>
+				<td>
+					@person.Car?.Name
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
