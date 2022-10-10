@@ -1,0 +1,17 @@
+﻿@model IEnumerable<IGrouping<bool, Record>>
+@{
+	var recordGroupList = Model;
+}
+
+<h1>Record Summary</h1>
+
+@foreach (var recordGroup in recordGroupList)
+{
+	var key = recordGroup.Key;
+	<h2>Key @key</h2>
+	foreach (var record in recordGroup)
+	{
+		var title = record.Title;
+		<p>Title @title</p>
+	}
+}
