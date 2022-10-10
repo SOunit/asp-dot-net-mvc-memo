@@ -6,6 +6,8 @@ namespace asp_dot_net_mvc_demo.Models
 	{
 		public int Id { get; set; }
 
+		public int? SummaryId { get; set; }
+
 		public List<OrderItem> OrderItems { get; set; }
 
 		// for post
