@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using asp_dot_net_mvc_demo.Data;
 using asp_dot_net_mvc_demo.Data.ViewModels;
@@ -67,41 +66,25 @@ namespace asp_dot_net_mvc_demo.Controllers
 
             updateOrderListVM.OrderList = orderList;
 
-            var list = new List<UpdateOrderVM>();
-            foreach (var order in orderList)
-            {
-                foreach (var item in order.OrderItems)
-                {
-                    var updateOrderVM = new UpdateOrderVM()
-                    {
-                        OrderId = order.Id,
-                        OrderItemId = item.Id,
-                        Quantity = item.Quantity,
-                    };
-
-                    list.Add(updateOrderVM);
-                }
-            }
-
-            updateOrderListVM.UpdateOrderVMList = list;
-
             return View(updateOrderListVM);
         }
 
         [HttpPost, ActionName("Update")]
         public async Task<IActionResult> UpdatePost(UpdateOrderListVM model)
         {
-            foreach (var updateOrderVm in model.UpdateOrderVMList)
+            foreach (var order in model.OrderList)
             {
-                var orderItemId = updateOrderVm.OrderItemId;
-                var quantity = updateOrderVm.Quantity;
+                foreach (var orderItem in order.OrderItems)
+                {
+                    var orderItemId = orderItem.Id;
+                    var quantity = orderItem.Quantity;
 
-                var dbOrderItem = _db.OrderItems.FirstOrDefault(oi => oi.Id == orderItemId);
+                    var dbOrderItem = _db.OrderItems.FirstOrDefault(oi => oi.Id == orderItemId);
 
-                dbOrderItem.Quantity = quantity;
+                    dbOrderItem.Quantity = quantity;
 
-                await _db.SaveChangesAsync();
-
+                    await _db.SaveChangesAsync();
+                }
             }
             return RedirectToAction(nameof(Index));
         }
