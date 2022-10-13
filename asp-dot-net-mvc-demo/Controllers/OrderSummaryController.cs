@@ -1,11 +1,20 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using asp_dot_net_mvc_demo.Data;
 using asp_dot_net_mvc_demo.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace asp_dot_net_mvc_demo.Controllers
 {
+    // FIXME: move to service?
+    public class OrderGroupKey
+    {
+        public Guid? SummaryId { get; set; }
+        public int OrderId { get; set; }
+    }
+
     public class OrderSummaryController : Controller
     {
         private readonly ApplicationDbContext _db;
@@ -14,9 +23,20 @@ namespace asp_dot_net_mvc_demo.Controllers
         {
             _db = db;
         }
+
         public IActionResult Index()
         {
-            return View();
+            var orderGroupList = _db.Orders
+                .Include(o => o.OrderItems)
+                .ThenInclude(oi => oi.Product)
+                .AsEnumerable()
+                .GroupBy(o => new OrderGroupKey
+                {
+                    SummaryId = o.SummaryId,
+                    OrderId = o.SummaryId != null ? -1 : o.Id
+                });
+
+            return View(orderGroupList);
         }
 
         public IActionResult CreateSummaryOrder()
