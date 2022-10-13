@@ -3,20 +3,15 @@
 @model UpdateOrderListVM
 @{
 	var orderList = Model.OrderList;
-	var orderVMList = Model.UpdateOrderVMList;
 }
 
 <h1>Update Order</h1>
 
 <form method="post">
-
-	@{
-		var i = 0;
-	}
-	@foreach (var order in orderList)
+	@for (var orderIndex = 0; orderIndex < orderList.Count(); orderIndex++)
 	{
-		@Html.HiddenFor(m => m.UpdateOrderVMList[i].OrderId)
-		<h1>Order ID @orderVMList[i].OrderId</h1>
+		@Html.HiddenFor(m => m.OrderList[orderIndex].Id)
+		<h1>Order ID @orderList[orderIndex].Id</h1>
 		<table class="table">
 			<thead>
 				<tr>
@@ -26,24 +21,22 @@
 				</tr>
 			</thead>
 			<tbody>
-				@foreach (var item in order.OrderItems)
+				@for (var orderItemIndex = 0; orderItemIndex < orderList[orderIndex].OrderItems.Count(); orderItemIndex++)
 				{
 					<tr>
 						<td>
-							@item.Id
+							@orderList[orderIndex].OrderItems[orderItemIndex].Id
 						</td>
-						<td>@item.Product.Name</td>
-						@Html.HiddenFor(m => m.UpdateOrderVMList[i].OrderItemId)
+						<td>@orderList[orderIndex].OrderItems[orderItemIndex].Product.Name</td>
+						@Html.HiddenFor(m => m.OrderList[orderIndex].OrderItems[orderItemIndex].Id)
 						<td>
-							@Html.EditorFor(m => m.UpdateOrderVMList[i].Quantity)
+							@Html.EditorFor(m => m.OrderList[orderIndex].OrderItems[orderItemIndex].Quantity)
 						</td>
 					</tr>
-					i++;
 				}
 			</tbody>
 		</table>
 	}
 
-	<input asp-for="TestString" />
 	<button type="submit" class="btn btn-success">Update Order List</button>
 </form>
