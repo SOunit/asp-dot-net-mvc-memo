@@ -35,9 +35,45 @@
 			</td>
 		</tr>
 		<tr>
-			<td>Entity Framework</td>
+			<td>
+				Entity Framework
+				<ul>
+					<li>One to One</li>
+					<li>One to Many</li>
+					<li>Many to Many</li>
+				</ul>
+			</td>
 			<td>
 				<a asp-controller="EntityFramework" asp-action="Index">Entity Framework</a>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Entity Framework
+				<ul>
+					<li>
+						Simple Groupby
+						<ul>
+							<li>use AsEnumerable() before GroupBy()</li>
+							<li>GroupBy just make group including children</li>
+							<li>calculate in other place, groupBy focus on grouping only</li>
+						</ul>
+					</li>
+				</ul>
+			</td>
+			<td>
+				<a asp-controller="RecordSummary" asp-action="Index">Record Summary</a>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Entity Framework
+				<ul>
+					<li>Order Summary</li>
+				</ul>
+			</td>
+			<td>
+				<a asp-controller="OrderSummary" asp-action="Index">Order Summary</a>
 			</td>
 		</tr>
 		<tr>
