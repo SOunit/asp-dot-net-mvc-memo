@@ -1,0 +1,30 @@
+﻿@using asp_dot_net_mvc_demo.Controllers
+@model IEnumerable<RecordListGroupByIsCompleted>
+
+@{
+	var recordListGroupByIsCompleted = Model;
+}
+
+
+
+<h1>GroupBy OrderBy</h1>
+
+@foreach (var item in recordListGroupByIsCompleted)
+{
+	<h2>Key @item.Key</h2>
+	<table class="table">
+		<thead>
+			<tr>
+				<td>Title</td>
+			</tr>
+		</thead>
+			<tbody>
+		@foreach (var record in item.Records)
+		{
+			<tr>
+					<td>@record.Title</td>
+			</tr>
+		}
+		</tbody>
+	</table>
+}
