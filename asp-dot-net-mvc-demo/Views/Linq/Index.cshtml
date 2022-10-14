@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Product>
+@{
+	var productList = Model;
+}
+
+<h1>Linq</h1>
+
+<h2>Where</h2>
+@foreach (var product in productList)
+{
+	<p>@product.Name</p>
+}
