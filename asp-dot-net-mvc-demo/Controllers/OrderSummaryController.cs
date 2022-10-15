@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using asp_dot_net_mvc_demo.Data;
@@ -8,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace asp_dot_net_mvc_demo.Controllers
 {
-    // FIXME: move to service?
-    public class OrderGroupKey
+    public class OrderListGroupBySummaryId
     {
         public Guid? SummaryId { get; set; }
         public int OrderId { get; set; }
+        public List<Order> OrderList { get; set; }
     }
 
     public class OrderSummaryController : Controller
@@ -30,11 +31,18 @@ namespace asp_dot_net_mvc_demo.Controllers
                 .Include(o => o.OrderItems)
                 .ThenInclude(oi => oi.Product)
                 .AsEnumerable()
-                .GroupBy(o => new OrderGroupKey
+                .GroupBy(o => new
                 {
                     SummaryId = o.SummaryId,
                     OrderId = o.SummaryId != null ? -1 : o.Id
-                });
+                })
+                .Select(og => new OrderListGroupBySummaryId
+                {
+                    SummaryId = og.Key.SummaryId,
+                    OrderId = og.Key.OrderId,
+                    OrderList = og.ToList()
+                })
+                .OrderBy(og => og.SummaryId);
 
             return View(orderGroupList);
         }
