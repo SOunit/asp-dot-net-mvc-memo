@@ -1,6 +1,6 @@
 ﻿@using asp_dot_net_mvc_demo.Controllers
 
-@model IEnumerable<IGrouping<OrderGroupKey, Order>>
+@model IOrderedEnumerable<OrderListGroupBySummaryId>
 
 @{
 	var orderGroupList = Model;
@@ -10,27 +10,25 @@
 
 <a asp-action="CreateSummaryOrder">Create Summary Order</a>
 
-
 @foreach (var orderGroup in orderGroupList)
 {
 	<h2>Order Summary</h2>
-	foreach (var order in orderGroup)
-	{
-
-		<table class="table">
-			<thead>
-				<tr>
-					<th>Summary Order Id</th>
-					<th>Order Id</th>
-					<th>Product Name</th>
-					<th>Quantity</th>
-				</tr>
-			</thead>
-			<tbody>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Summary Order Id</th>
+				<th>Order Id</th>
+				<th>Product Name</th>
+				<th>Quantity</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var order in orderGroup.OrderList)
+			{
 				@foreach (var orderItem in order.OrderItems)
 				{
-					var orderId = orderGroup.Key.OrderId;
-					var summaryId = orderGroup.Key.SummaryId;
+					var orderId = orderGroup.OrderId;
+					var summaryId = orderGroup.SummaryId;
 					var name = orderItem.Product.Name;
 					var quantity = orderItem.Quantity;
 					<tr>
@@ -40,7 +38,7 @@
 						<td>@quantity</td>
 					</tr>
 				}
-			</tbody>
-		</table>
-	}
+			}
+		</tbody>
+	</table>
 }
